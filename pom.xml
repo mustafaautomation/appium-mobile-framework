@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <appium.version>9.3.0</appium.version>
         <testng.version>7.10.2</testng.version>
-        <assertj.version>3.26.3</assertj.version>
+        <assertj.version>3.27.7</assertj.version>
         <allure.version>2.29.1</allure.version>
         <maven-surefire.version>3.5.2</maven-surefire.version>
     </properties>
