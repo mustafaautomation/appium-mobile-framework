@@ -14,4 +14,16 @@
         </classes>
     </test>
 
+    <test name="Cart Tests">
+        <classes>
+            <class name="com.quvantic.mobile.tests.CartTest"/>
+        </classes>
+    </test>
+
+    <test name="Navigation Tests">
+        <classes>
+            <class name="com.quvantic.mobile.tests.NavigationTest"/>
+        </classes>
+    </test>
+
 </suite>
