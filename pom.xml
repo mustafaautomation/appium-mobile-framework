@@ -18,7 +18,7 @@
         <testng.version>7.10.2</testng.version>
         <assertj.version>3.26.3</assertj.version>
         <allure.version>2.29.1</allure.version>
-        <maven-surefire.version>3.5.2</maven-surefire.version>
+        <maven-surefire.version>3.5.5</maven-surefire.version>
     </properties>
 
     <dependencies>
