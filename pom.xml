@@ -30,7 +30,7 @@
             <artifactId>java-client</artifactId>
             <version>${appium.version}</version>
         </dependency>
-        <!-- java-client 11 no longer brings selenium-support (PageFactory, WebDriverWait) transitively -->
+        <!-- java-client 11 ships its own PageFactory but no longer brings selenium-support (WebDriverWait, ExpectedConditions) transitively -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
