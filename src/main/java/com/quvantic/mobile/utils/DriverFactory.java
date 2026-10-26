@@ -47,6 +47,15 @@ public final class DriverFactory {
     }
 
     private static AndroidDriver createAndroidDriver(URL serverUrl) {
+        return new AndroidDriver(serverUrl, androidOptions());
+    }
+
+    private static IOSDriver createIOSDriver(URL serverUrl) {
+        return new IOSDriver(serverUrl, iosOptions());
+    }
+
+    /** Capabilities for an Android session, built from {@link AppConfig}. */
+    static UiAutomator2Options androidOptions() {
         UiAutomator2Options options = new UiAutomator2Options()
                 .setDeviceName(AppConfig.getDeviceName())
                 .setAutoGrantPermissions(true)
@@ -56,11 +65,11 @@ public final class DriverFactory {
         if (!appPath.isEmpty()) {
             options.setApp(appPath);
         }
-
-        return new AndroidDriver(serverUrl, options);
+        return options;
     }
 
-    private static IOSDriver createIOSDriver(URL serverUrl) {
+    /** Capabilities for an iOS session, built from {@link AppConfig}. */
+    static XCUITestOptions iosOptions() {
         XCUITestOptions options = new XCUITestOptions()
                 .setDeviceName(AppConfig.getDeviceName())
                 .setNewCommandTimeout(Duration.ofSeconds(AppConfig.getTimeout()));
@@ -69,7 +78,6 @@ public final class DriverFactory {
         if (!appPath.isEmpty()) {
             options.setApp(appPath);
         }
-
-        return new IOSDriver(serverUrl, options);
+        return options;
     }
 }

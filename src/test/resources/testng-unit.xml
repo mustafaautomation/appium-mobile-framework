@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- Unit tests: no Appium server, emulator or device needed. Runs in CI. -->
+<suite name="Unit Suite">
+    <test name="Unit Tests">
+        <classes>
+            <class name="com.quvantic.mobile.config.AppConfigTest"/>
+            <class name="com.quvantic.mobile.utils.DriverFactoryTest"/>
+            <class name="com.quvantic.mobile.utils.GestureHelperTest"/>
+        </classes>
+    </test>
+</suite>

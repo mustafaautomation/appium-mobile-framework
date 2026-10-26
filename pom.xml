@@ -7,18 +7,21 @@
     <artifactId>appium-mobile-framework</artifactId>
     <version>1.0.0</version>
     <name>Appium Mobile Framework</name>
-    <description>Enterprise Appium 2.0 mobile testing framework with Page Object Model</description>
+    <description>Appium 2.0 mobile testing framework with Page Object Model</description>
     <url>https://github.com/mustafaautomation/appium-mobile-framework</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <appium.version>9.3.0</appium.version>
+        <appium.version>10.1.1</appium.version>
         <testng.version>7.10.2</testng.version>
         <assertj.version>3.26.3</assertj.version>
         <allure.version>2.29.1</allure.version>
         <maven-surefire.version>3.5.2</maven-surefire.version>
+        <mockito.version>5.14.2</mockito.version>
+        <!-- Default: unit tests that need no device. Device suite: -Dsuite=testng-device.xml -->
+        <suite>testng-unit.xml</suite>
     </properties>
 
     <dependencies>
@@ -40,6 +43,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
@@ -55,7 +64,7 @@
                 <version>${maven-surefire.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/${suite}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
