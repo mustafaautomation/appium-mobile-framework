@@ -2,10 +2,10 @@
 
 [![CI](https://github.com/mustafaautomation/appium-mobile-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/mustafaautomation/appium-mobile-framework/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Java](https://img.shields.io/badge/Java-17-ED8B00.svg?logo=openjdk&logoColor=white)](https://openjdk.org)
+[![Java](https://img.shields.io/badge/Java-21%20%7C%2025-ED8B00.svg?logo=openjdk&logoColor=white)](https://openjdk.org)
 [![Appium](https://img.shields.io/badge/Appium-2.0-662D91.svg)](https://appium.io)
 
-Appium 2.0 mobile testing framework with Page Object Model, built as a portfolio project. Supports Android (UiAutomator2) and iOS (XCUITest). ThreadLocal driver for parallel execution, gesture helpers, and Allure reporting.
+Appium mobile testing framework (Java client 11) with Page Object Model, built as a portfolio project. Supports Android (UiAutomator2) and iOS (XCUITest). ThreadLocal driver for parallel execution, gesture helpers, and Allure reporting.
 
 ---
 
@@ -76,7 +76,7 @@ mvn test -Dsuite=testng-device.xml -Dplatform=ios -Ddevice.name="iPhone 15"
 │  GestureHelper (swipe/tap/press) │
 │  AppConfig (system properties)   │
 ├─────────────────────────────────┤
-│  Appium 2.0 │ TestNG │ Allure   │
+│  Appium     │ TestNG │ Allure   │
 └─────────────────────────────────┘
 ```
 
@@ -138,12 +138,13 @@ appium-mobile-framework/
 
 | Tool | Purpose |
 |------|---------|
-| Appium 2.0 (java-client 10.1) | Mobile automation |
+| Java 21 (CI also runs JDK 25) | Language level |
+| Appium java-client 11.0 (Selenium 4.5x) | Mobile automation |
 | UiAutomator2 / XCUITest | Platform drivers |
-| TestNG 7.10 | Test runner |
-| Allure 2.29 | Reporting |
+| TestNG 7.12 | Test runner |
+| Allure 2.35 | Reporting |
 | AssertJ | Fluent assertions |
-| Mockito | Mocked driver in unit tests |
+| Mockito 5.24 (loaded as a Java agent) | Mocked driver in unit tests |
 | Maven | Build management |
 
 ---

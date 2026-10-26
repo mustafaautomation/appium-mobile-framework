@@ -7,19 +7,18 @@
     <artifactId>appium-mobile-framework</artifactId>
     <version>1.0.0</version>
     <name>Appium Mobile Framework</name>
-    <description>Appium 2.0 mobile testing framework with Page Object Model</description>
+    <description>Appium mobile test framework (Java client 11) with Page Object Model</description>
     <url>https://github.com/mustafaautomation/appium-mobile-framework</url>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <appium.version>10.1.1</appium.version>
-        <testng.version>7.10.2</testng.version>
-        <assertj.version>3.26.3</assertj.version>
-        <allure.version>2.29.1</allure.version>
-        <maven-surefire.version>3.5.2</maven-surefire.version>
-        <mockito.version>5.14.2</mockito.version>
+        <appium.version>11.0.0</appium.version>
+        <testng.version>7.12.0</testng.version>
+        <assertj.version>3.27.7</assertj.version>
+        <allure.version>2.35.5</allure.version>
+        <maven-surefire.version>3.5.6</maven-surefire.version>
+        <mockito.version>5.24.0</mockito.version>
         <!-- Default: unit tests that need no device. Device suite: -Dsuite=testng-device.xml -->
         <suite>testng-unit.xml</suite>
     </properties>
@@ -58,11 +57,26 @@
 
     <build>
         <plugins>
+            <!-- Sets ${org.mockito:mockito-core:jar} so Mockito can be loaded as a Java agent
+                 (JDK 21+ warns about, and future JDKs block, agents attached at runtime). -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.11.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>properties</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire.version}</version>
                 <configuration>
+                    <argLine>-javaagent:${org.mockito:mockito-core:jar}</argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/${suite}</suiteXmlFile>
                     </suiteXmlFiles>

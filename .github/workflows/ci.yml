@@ -5,12 +5,16 @@ on:
 permissions: { contents: read }
 jobs:
   build:
-    name: Build & Unit Tests
+    name: Build & Unit Tests (JDK ${{ matrix.java }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java: ['21', '25']
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with: { java-version: '17', distribution: 'temurin', cache: 'maven' }
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with: { java-version: '${{ matrix.java }}', distribution: 'temurin', cache: 'maven' }
       - name: Compile (incl. device tests)
         run: mvn -B -q compile test-compile
       # Device tests need an emulator and Appium server, so CI runs the unit suite only.
